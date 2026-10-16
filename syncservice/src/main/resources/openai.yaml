@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: sync-service
+  version: 1.0.0
+  description: Replicación asíncrona del resumen del monolito hacia MongoDB.
+paths:
+  /api/sync/resumen:
+    post:
+      tags: [Sync]
+      operationId: iniciarSincronizacionResumen
+      summary: Inicia el job de sincronización
+      responses:
+        '202':
+          description: Job aceptado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAccepted'
+  /api/sync/jobs/{jobId}:
+    get:
+      tags: [Sync]
+      operationId: obtenerJob
+      summary: Consulta el estado de un job
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Estado del job
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '404':
+          description: El job no existe
+components:
+  schemas:
+    EstadoJob:
+      type: string
+      enum: [PENDIENTE, EN_PROGRESO, COMPLETADO, FALLIDO]
+    JobAccepted:
+      type: object
+      required: [jobId]
+      properties:
+        jobId: { type: string }
+    JobStatus:
+      type: object
+      required: [jobId, estado]
+      properties:
+        jobId: { type: string }
+        estado: { $ref: '#/components/schemas/EstadoJob' }
+        creados: { type: integer }
+        actualizados: { type: integer }
+        sinCambios: { type: integer }
+        error: { type: string }
