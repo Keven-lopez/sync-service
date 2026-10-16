@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: sync-service
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/nombre_de_tu_bd?allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${MYSQL_USER:sync_ro}
+    password: ${MYSQL_PASSWORD:una_clave}
+    hikari:
+      read-only: true
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb://localhost:27017/sync}
