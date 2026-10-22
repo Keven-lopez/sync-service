@@ -1,5 +1,8 @@
 package com.oficinaagua.syncservice.sync;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.NestedExceptionUtils;
 import com.oficinaagua.syncservice.domain.ResumenCliente;
 import com.oficinaagua.syncservice.domain.ResumenClienteDoc;
 import com.oficinaagua.syncservice.job.JobService;
@@ -14,6 +17,7 @@ public class SyncWorker {
     private final ResumenMysqlReader reader;
     private final ResumenMongoStore store;
     private final JobService jobs;
+    private static final Logger log = LoggerFactory.getLogger(SyncWorker.class);
 
     public SyncWorker(ResumenMysqlReader reader, ResumenMongoStore store, JobService jobs) {
         this.reader = reader;
@@ -43,7 +47,8 @@ public class SyncWorker {
             }
             jobs.completado(jobId, creados, actualizados, sinCambios);
         } catch (Exception e) {
-            jobs.fallido(jobId, e.getMessage());
+            log.error("Sync fallida (job {})", jobId, e);
+            jobs.fallido(jobId, NestedExceptionUtils.getMostSpecificCause(e).getMessage());
         }
     }
 }
