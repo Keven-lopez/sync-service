@@ -4,5 +4,18 @@ services:
     ports: ["27017:27017"]
     volumes: [mongo-data:/data/db]
 
+  sync-service:
+    build: ./syncservice
+    ports: ["8085:8081"]
+    environment:
+      MYSQL_URL: jdbc:mysql://host.docker.internal:3306/aqua_gest?allowPublicKeyRetrieval=true&useSSL=false
+      MYSQL_USER: sync_ro
+      MYSQL_PASSWORD: una_clave
+      MONGO_URI: mongodb://mongo:27017/sync
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on: [mongo]
+
 volumes:
   mongo-data:
+

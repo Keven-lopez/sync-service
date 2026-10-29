@@ -1,5 +1,8 @@
 server:
   port: 8081
+  
+sync:
+  cron: "0 0 2 * * *"
 
 spring:
   application:
@@ -10,6 +13,9 @@ spring:
     password: ${MYSQL_PASSWORD:una_clave}
     hikari:
       read-only: true
+  mongodb:
+    uri: ${MONGO_URI:mongodb://localhost:27017/sync}
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://localhost:27017/sync}
+      representation:
+        big-decimal: decimal128
