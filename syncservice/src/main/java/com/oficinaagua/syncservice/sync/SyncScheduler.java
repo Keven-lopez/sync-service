@@ -28,6 +28,6 @@ public class SyncScheduler {
     public void programada() {
         String jobId = jobs.crear();
         log.info("Sincronización programada iniciada (job {})", jobId);
-        worker.ejecutar(jobId); // @Async: este método vuelve de inmediato
+        worker.ejecutar(jobId); // @Async: este metodo vuelve de inmediato
     }
 }

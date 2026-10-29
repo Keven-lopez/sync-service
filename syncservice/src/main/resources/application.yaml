@@ -1,6 +1,6 @@
 server:
   port: 8081
-  
+
 sync:
   cron: "0 0 2 * * *"
 
