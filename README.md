@@ -1,3 +1,8 @@
+Nombre: Keven Ryan Lopez Pineda
+Carnet: 0905-23-4114
+Repositorio: https://github.com/Keven-lopez/sync-service
+Modulo asignado: Replicación asíncrona a NoSQL | SQL.
+
 # Oficina del Agua · Fase 2
 
 Servicios de la Fase 2 que acompañan al sistema de gestión de agua potable (monolito Laravel + Filament). Este repositorio **no modifica el monolito**: los servicios nuevos viven aparte y leen su base de datos en modo solo lectura.
