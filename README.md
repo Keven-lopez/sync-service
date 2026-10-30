@@ -1,7 +1,7 @@
-Nombre: Keven Ryan Lopez Pineda
-Carnet: 0905-23-4114
-Repositorio: https://github.com/Keven-lopez/sync-service
-Modulo asignado: Replicación asíncrona a NoSQL | SQL.
+Nombre: Keven Ryan Lopez Pineda  
+Carnet: 0905-23-4114  
+Repositorio: https://github.com/Keven-lopez/sync-service  
+Módulo asignado: Replicación asíncrona a NoSQL | SQL
 
 # Oficina del Agua · Fase 2
 
