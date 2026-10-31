@@ -272,3 +272,5 @@ cd syncservice
 - Solo se replica el resumen por cliente; boletas, lecturas y pagos no se copian, solo los totales que alimentan el saldo.
 - Si el contenedor se reinicia a mitad de un job, ese job queda como `EN_PROGRESO` y no cambia solo.
 - No hay protección contra jobs simultáneos. Las escrituras son idempotentes, así que no se duplican datos, pero dos corridas a la vez hacen trabajo repetido.
+- 
+  ![Arquitectura del módulo sync-service](docs/arquitectura-sync-service.png)
